@@ -29,7 +29,7 @@ public class NitKlijent implements  Runnable{
 
 
 				System.out.println("Server ocekuje poruku!");
-				String operacija = odKlijenta.readLine(); //operacija
+				String operacija = odKlijenta.readLine(); 
 				if(operacija.equals("KRAJ")){
 					break;
 				}
@@ -45,7 +45,7 @@ public class NitKlijent implements  Runnable{
 
 
 				String [] niz = izborKlijenta.split("##");
-				double rezultat = Double.parseDouble(niz[0]);//rezultat
+				double rezultat = Double.parseDouble(niz[0]);
 				for (int i = 1; i < niz.length; i++) {
 					
 					double sadasnji = Double.parseDouble(niz[i]);
