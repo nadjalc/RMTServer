@@ -29,8 +29,8 @@ public class NitKlijent implements  Runnable{
 
 
 				System.out.println("Server ocekuje poruku!");
-				String izbor = odKlijenta.readLine(); //operacija
-				if(izbor.equals("KRAJ")){
+				String operacija = odKlijenta.readLine(); //operacija
+				if(operacija.equals("KRAJ")){
 					break;
 				}
 
@@ -45,32 +45,34 @@ public class NitKlijent implements  Runnable{
 
 
 				String [] niz = izborKlijenta.split("##");
-				double izborServera = 0;//rezultat
-				String a1 = niz[0];
-				String b1 = niz[1];
-				double a = Double.parseDouble(a1);
-				double b = Double.parseDouble(b1);
-
-
-				if(izbor.equals("1")){
-					izborServera = a+b;
+				double rezultat = Double.parseDouble(niz[0]);//rezultat
+				for (int i = 1; i < niz.length; i++) {
+					
+					double sadasnji = Double.parseDouble(niz[i]);
+					
+					if(operacija.equals("1")){
+						rezultat = rezultat + sadasnji;
+					}
+					if(operacija.equals("2")){
+						rezultat = rezultat - sadasnji;
+					}
+					if(operacija.equals("3")){
+						rezultat = rezultat * sadasnji;
+					}
+					if(operacija.equals("4")){
+						rezultat = rezultat / sadasnji;
+					}
+					
 				}
-				if(izbor.equals("2")){
-					izborServera = a-b;
-				}
-				if(izbor.equals("3")){
-					izborServera = a*b;
-				}
-				if(izbor.equals("4")){
-					izborServera = a/b;
-				}
 
 
 
 
 
 
-				dataOdServera.println(izborServera);
+
+
+				dataOdServera.println(rezultat);
 				podaciSoket.close();
 			}
 			soketZaKomunikaciju.close();
